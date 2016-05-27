@@ -13,6 +13,7 @@ var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var plumber = require('gulp-plumber');
 var del = require('del');
+var sass = require('gulp-sass');
 
 /* Constants */
 var SRC = './src';
@@ -34,7 +35,24 @@ gulp.task('less', function () {
     .pipe(gulp.dest(DIST + '/styles'));
 });
 
-gulp.task('sass', function() {});
+gulp.task('sass:production', function() {
+  return gulp.src(SRC + '/sass/main.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
+    .pipe(shorthand())
+    .pipe(csso())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(DIST + '/styles'));
+});
+
+gulp.task('sass', function() {
+  return gulp.src(SRC + '/sass/main.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(DIST + '/styles'))
+});
 
 /* Scripts */
 gulp.task('js:production', function() {
