@@ -1,3 +1,3 @@
 export default function () {
-  console.log('Hello from another module');
+  console.log('Hello from another module !?!');
 };

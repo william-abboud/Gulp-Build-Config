@@ -49,7 +49,9 @@ gulp.task('sass:production', function() {
 gulp.task('sass', function() {
   return gulp.src(SRC + '/sass/main.scss')
     .pipe(sourcemaps.init())
+    .pipe(plumber())
     .pipe(sass())
+    .on('error', sass.logError)
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(DIST + '/styles'))
 });
@@ -87,4 +89,11 @@ gulp.task('clean', function() {
   return del(['dist/**', '!dist']);
 });
 
-gulp.task('build', ['clean']);
+/* Watching */
+gulp.task('watch:js', ['js'], function() {
+  gulp.watch([SRC + '/scripts/**/*.js', SRC + '/scripts/**/*.jsx'], ['js']);
+});
+
+gulp.task('watch:sass', ['sass'], function() {
+  gulp.watch(SRC + '/sass/**/*.scss', ['sass']);
+});
