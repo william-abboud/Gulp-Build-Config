@@ -1,1 +1,3 @@
-export default 50;
+export default {
+	num: 50
+};
