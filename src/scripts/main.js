@@ -1,8 +1,6 @@
 import foo from './foo';
-import sample from './sample.jsx';
+import Example from './sample.jsx';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const hello = hi => {
-	console.log(hi);
-};
-
-hello('yeah');
+ReactDOM.render(<Example />, document.body);
