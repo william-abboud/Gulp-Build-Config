@@ -62,8 +62,9 @@ gulp.task('js', function() {
   .pipe(gulp.dest('dist/scripts'));
 });
 
-
 /* Misc */
 gulp.task('clean', function() {
   return del(['dist/**', '!dist']);
 });
+
+gulp.task('build', ['clean']);
