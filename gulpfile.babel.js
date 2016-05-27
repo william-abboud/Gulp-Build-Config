@@ -34,9 +34,7 @@ gulp.task('less', function () {
     .pipe(gulp.dest(DIST + '/styles'));
 });
 
-gulp.task('sass', function() {
-  // do sass magic
-});
+gulp.task('sass', function() {});
 
 /* Scripts */
 gulp.task('js:production', function() {
