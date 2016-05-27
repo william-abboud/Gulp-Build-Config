@@ -1,0 +1,7 @@
+$foo: blue;
+
+body {
+  background: red;
+  color: $foo;
+  flex: 1 0 auto;
+}
