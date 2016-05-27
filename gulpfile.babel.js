@@ -34,6 +34,10 @@ gulp.task('less', function () {
     .pipe(gulp.dest(DIST + '/styles'));
 });
 
+gulp.task('sass', function() {
+  // do sass magic
+});
+
 /* Scripts */
 gulp.task('js:production', function() {
   var bundler = browserify(SRC + '/scripts/main.js', { debug: true });
