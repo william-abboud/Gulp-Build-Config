@@ -1,0 +1,8 @@
+$foo: blue;
+
+body {
+  background: yellow;
+  color: $foo;
+  flex: 1 0 auto;
+  transform: translateY(10px);
+}
