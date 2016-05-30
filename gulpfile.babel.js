@@ -193,7 +193,7 @@ gulp.task('test', function() {
  * Cleans (deletes) contents of the dist folder
 */
 gulp.task('clean', function() {
-  return del(['dist/**', '!dist']);
+  return del(['dist/**/*', '!dist']);
 });
 
 /** Watching */
