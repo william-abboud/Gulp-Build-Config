@@ -1,11 +1,8 @@
-import foo from './foo';
-import Example from './sample.jsx';
-import React from 'react';
+import 'babel-polyfill';
+import React from'react';
 import ReactDOM from 'react-dom';
+import HelloWorld from './sample.jsx';
 
-ReactDOM.render(<Example />, document.body);
-const hello = hi => {
-	console.log(`${hi} I love Gulp watch !!!`);
-};
+ReactDOM.render(<HelloWorld />, document.getElementById('root'));
 
-hello('yeah !!');
+console.log([1, 2, 3].findIndex(item => item === 3));

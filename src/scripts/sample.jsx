@@ -1,13 +1,14 @@
 import React from 'react';
 
-const Example = React.createClass({
+export default React.createClass({
 	render() {
 		return (
-			<div> 
-				And so it begins
+			<div>
+				<p> 
+					And so it begins
+				</p>
+				<button> Click me !</button>
 			</div>
 		);
 	}
 });
-
-export default Example;
