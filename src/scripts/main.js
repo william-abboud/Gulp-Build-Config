@@ -1,8 +1,20 @@
 import 'babel-polyfill';
 import React from'react';
-import ReactDOM from 'react-dom';
-import HelloWorld from './sample.jsx';
+import { render } from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from  'react-redux'; 
+import contactsReducer from './contactsReducer';
+import AddContactContainer from './AddContactContainer.jsx';
+import ContactListContainer from './ContactListContainer.jsx';
 
-ReactDOM.render(<HelloWorld />, document.getElementById('root'));
+const store = createStore(contactsReducer);
 
-console.log([1, 2, 3].findIndex(item => item === 3));
+render(
+  <Provider store={store}>
+    <div>
+      <AddContactContainer />
+      <ContactListContainer />
+    </div>
+  </Provider>,
+  document.getElementById('root')
+);
