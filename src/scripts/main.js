@@ -8,7 +8,6 @@ import AddContactContainer from './AddContactContainer.jsx';
 import ContactListContainer from './ContactListContainer.jsx';
 
 const store = createStore(contactsReducer);
-
 render(
   <Provider store={store}>
     <div>

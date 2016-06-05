@@ -4,7 +4,10 @@ import ContactSettings from './ContactSettings.jsx';
 export default React.createClass({
   getInitialState() {
     return {
-      areSettingsVisible: false
+      areSettingsVisible: false,
+      editing: false,
+      phone: '',
+      name: ''
     };
   },
 
@@ -12,20 +15,54 @@ export default React.createClass({
     this.setState({ areSettingsVisible: true });
   },
 
-  hideSettings() {
+  hideSettings(e) {
     this.setState({ areSettingsVisible: false });
   },
 
+  onEdit() {
+    this.setState({ editing: true });
+  },
+
+  onNewNameTypeIn(e) {
+    this.setState({ name: e.target.value });
+  },
+
+  onNewPhoneTypeIn(e) {
+    this.setState({ phone: e.target.value });
+  },
+  
+  onSave() {
+    this.props.onEdit(this.state.name, this.state.phone);
+    this.setState({ name: '', editing: false, phone: '' });
+  },
+
   render() {
-    const { areSettingsVisible } = this.state;
+    const {
+      areSettingsVisible,
+      editing,
+      name,
+      phone
+    } = this.state;
 
     return (
-      <li 
+      <li
+        className="contact"
         onMouseOver={this.showSettings}
-        onMouseOut={this.hideSettings}
+        onMouseLeave={this.hideSettings}
       >
         {this.props.children}
-        {areSettingsVisible ? <ContactSettings onDelete={() => {}} onEdit={() => {}} /> : null}
+        {areSettingsVisible ? 
+          <ContactSettings onDelete={this.props.onDelete} onEdit={this.onEdit} /> :
+          null
+        }
+        {editing ?
+         <form>
+           <input type="text" placeholder="Enter name" value={name} onChange={this.onNewNameTypeIn} />
+           <input type="number" placeholder="Enter phone" value={phone} onChange={this.onNewPhoneTypeIn} />
+           <button onClick={this.onSave}>Save</button>
+         </form> :
+          null
+        }
       </li>
     );
   }

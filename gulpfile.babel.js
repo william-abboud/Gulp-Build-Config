@@ -1,26 +1,26 @@
-var gulp = require('gulp');
-var less = require('gulp-less');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var shorthand = require('gulp-shorthand');
-var csso = require('gulp-csso');
-var babel = require('gulp-babel');
-var babelify = require('babelify');
-var browserify = require('browserify');
-var vinylbuffer = require('vinyl-buffer');
-var vinylsource = require('vinyl-source-stream');
-var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
-var plumber = require('gulp-plumber');
-var del = require('del');
-var sass = require('gulp-sass');
-var gutil = require('gulp-util');
-var jasmine = require('gulp-jasmine');
-var runSequence = require('run-sequence');
-var notify = require('gulp-notify');
-var through = require('gulp-through');
-var watchify = require('watchify');
-var bpolyfill = require('babel-polyfill');
+var gulp = require('gulp'); // Gulp, Duh
+var less = require('gulp-less'); // LESS Compiler
+var postcss = require('gulp-postcss'); // PostCSS processor
+var autoprefixer = require('autoprefixer'); // Autoprefixer adds css vendor prefixes
+var shorthand = require('gulp-shorthand'); // Shorthands long css properties
+var csso = require('gulp-csso'); // Minifies CSS
+var babel = require('gulp-babel'); // Babel transforms future JS to currently supported
+var babelify = require('babelify'); // Additional plugin for Browserify
+var browserify = require('browserify'); // Adds modularization (CommonJS) on the front end
+var vinylbuffer = require('vinyl-buffer'); // Buffers gulp streams
+var vinylsource = require('vinyl-source-stream'); // Transforms streams to gulp streams
+var uglify = require('gulp-uglify'); // Minifies JS
+var sourcemaps = require('gulp-sourcemaps'); // Sourcemaps generator
+var plumber = require('gulp-plumber'); // Stops gulp from crashing on error
+var del = require('del'); // Deletes files and folders
+var sass = require('gulp-sass'); // SASS compiler
+var gutil = require('gulp-util'); // Utilities for gulp
+var jasmine = require('gulp-jasmine'); // Jasmine testing
+var runSequence = require('run-sequence'); // Allows sequential run of gulp tasks
+var notify = require('gulp-notify'); // Uses OS messaging system to notify the programmer
+var through = require('gulp-through'); // Passes gulp streams and adds on
+var watchify = require('watchify'); // Blazing fast change watcher for JS files
+var bpolyfill = require('babel-polyfill'); // Adds ES6 future features
 
 /* Config */
 var SRC = './src';
@@ -235,6 +235,6 @@ gulp.task('default', function (done) {
   if (!!gutil.env.production) {
     runSequence('clean', ['js:production', 'less:production', 'html'], done);
   } else {
-    runSequence('clean', ['js', 'watch:less', 'watch:html'], done);    
+    runSequence('clean', ['js', 'watch:less', 'watch:html', 'watch:sass'], done);
   }
 });

@@ -3,28 +3,35 @@ import React from 'react';
 export default React.createClass({
 	getInitialState() {
 		return {
-			text: ''
+			text: '',
+      phone: ''
 		};
 	},
 
-	onTypeIn(e) {
+	onNameEnter(e) {
 		this.setState({ text: e.target.value });
 	},
 
-	onAddTrigger(text) {
+  onNumEnter(e) {
+    this.setState({ phone: e.target.value });
+  },
+
+	onAddTrigger(text, phone) {
 		if (!text.trim()) return;
 
-		this.props.onAddClick(text);
+		this.props.onAddClick(text, phone);
+		this.setState({text: '', phone: ''});
 	},
 
 	render() {
-		const { text } = this.state;
+		const { text, phone } = this.state;
 
 		return (
-			<div>
-				<input type="text" value={text} onChange={this.onTypeIn} required/>
-				<button onClick={this.onAddTrigger.bind(this, text)}> + </button>
-			</div>
+			<form>
+				<input type="text" placeholder="Enter contact name" value={text} onChange={this.onNameEnter} required />
+        <input type="number" placeholder="Enter phone number" value={phone} onChange={this.onNumEnter} required />
+				<button onClick={this.onAddTrigger.bind(this, text, phone)}> + </button>
+			</form>
 		);
 	}
 });

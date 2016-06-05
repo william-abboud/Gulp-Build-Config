@@ -1,8 +1,23 @@
-$foo: blue;
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
 
-body {
-  background: yellow;
-  color: $foo;
-  flex: 1 0 auto;
-  transform: translateY(10px);
+.settings {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.contact {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: 5px;
+  padding: 10px;
+  background: #E0F7FA;
+}
+
+.contact-category-title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid darkblue;
 }

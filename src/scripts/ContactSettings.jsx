@@ -5,9 +5,9 @@ export default React.createClass({
     const {onDelete, onEdit} = this.props;
 
     return (
-      <div>
-        <button onClick={onDelete()}>X</button>
-        <button onClick={onEdit()}>Edit</button>
+      <div className="settings">
+        <button onClick={onDelete}>X</button>
+        <button onClick={onEdit}>Edit</button>
       </div>
     );
   }
